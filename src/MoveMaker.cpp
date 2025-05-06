@@ -208,3 +208,44 @@ void MoveMaker::unmake_move(const Move &move) {
     board->enpassant_index = prev_data.enpassant_index;
     board->fifty_move_counter = prev_data.fifty_move_counter;
 }
+
+bool MoveMaker::opponent_checking_move(const Move &move) {
+    // We assume the move as already been made, so the piece
+    // already exists on target square. This also removes
+    // promotion complications.
+
+    // Handle direct checks on a piece-by-piece basis
+    switch (board->board[move.to_square_index]->piece_value) {
+        // Pawn
+        case 1: {
+            break;
+        }
+
+        // Knight
+        case 2: {
+            const int directions[8] = {DirectionVec::NNE,
+                                       DirectionVec::NNW,
+                                       DirectionVec::NEE,
+                                       DirectionVec::NWW,
+                                       DirectionVec::SSE,
+                                       DirectionVec::SEE,
+                                       DirectionVec::SSW,
+                                       DirectionVec::SWW}
+            break;
+        }
+
+        // King
+        case 3: {
+            break;
+        }
+
+        // Sliding piece
+        default: {
+        }
+    }
+
+    // Any piece can do a discovery check
+
+    // Ep case
+    // we just do a 'raw' check since ep is rare & complicated changes
+}

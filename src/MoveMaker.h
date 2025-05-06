@@ -45,10 +45,12 @@ public:
 
     // Checks
     // Method to compute if this move leaves opponent side in check
+    // Assume move has already been made
     bool opponent_checking_move(const Move &move);
 
     // Method to compute if this pseudo-legal move leaves own side in check.
     // 'false' == illegal move
+    // Assume move has NOT been made yet
     bool self_checking_move(const Move& move);
 
     // Helpers
